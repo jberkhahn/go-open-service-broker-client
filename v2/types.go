@@ -190,7 +190,18 @@ type ProvisionResponse struct {
 	// OperationKey is an extra identifier supplied by the broker to identify
 	// asynchronous operations.
 	OperationKey *OperationKey `json:"operation,omitempty"`
+	// ExtensionAPIs
+	ExtensionAPIs []ExtensionAPI `json:"extensionAPIs,omitempty"`
 }
+
+type ExtensionAPI struct {
+	DiscoveryURL string
+	ServerURL    string
+	Credentials  []ExtensionAPICredential
+	AdheresTo    string
+}
+
+type ExtensionAPICredential map[string]interface{}
 
 // OperationKey is an extra identifier from the broker in order to provide extra
 // identifiers for asynchronous operations.
